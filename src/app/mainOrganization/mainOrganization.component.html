@@ -1,4 +1,12 @@
 <li class="info__item">
+  <div class="info__button-section">
+    <button (click)="onClickEdit()" class="info__btn" type="button">
+      Редактировать
+    </button>
+    <button (click)="onClickAdd()" class="info__btn" type="button">
+      Добавить филиал
+    </button>
+  </div>
   <p class="info__data">Название организации: {{ fullName }}</p>
   <p class="info__data">Сокращенное название: {{ shortName }}</p>
   <p class="info__data">ИНН: {{ inn }}</p>
@@ -6,4 +14,9 @@
   <p class="info__data">Руководитель подразделения: {{ mainPerson }}</p>
   <p class="info__data">Адрес: {{ adress }}</p>
   <p class="info__data">Телефон: {{ phone }}</p>
+  <ul class="info__filial-list">
+    <app-filial></app-filial>
+    <app-filial></app-filial>
+    <app-filial></app-filial>
+  </ul>
 </li>

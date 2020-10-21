@@ -13,14 +13,6 @@
 .info__data {
   margin: 5px 0 0 0;
 }
-.info__filial-list {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  gap: 10px;
-  flex-direction: column;
-}
 
 .info__button-section {
   display: flex;

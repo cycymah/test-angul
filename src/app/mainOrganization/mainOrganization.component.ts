@@ -6,11 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./mainOrganization.component.css'],
 })
 export class MainOrganization {
-  fullName = 'Полное';
+  fullName = 'Полное имя';
   shortName = 'Сокращенное наименование';
   inn = 'ИНН';
   kpp = 'КПП';
   mainPerson = 'Учредитель(ФИО)';
   adress = 'Адрес';
   phone = 'Телефон';
+
+  onClickAdd() {
+    console.log('Добавляем');
+  }
+
+  onClickEdit() {
+    console.log('Редактируем');
+    this.fullName = 'Новое имя';
+  }
 }
