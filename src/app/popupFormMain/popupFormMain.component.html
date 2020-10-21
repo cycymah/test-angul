@@ -1,4 +1,7 @@
-<div class="modal page__modal modal_target_mainOrg">
+<div
+  class="modal page__modal modal_target_mainOrg"
+  [class.modal_active]="isOpen === false"
+>
   <div class="modal__overlay"></div>
   <div class="form">
     <h2 class="form__title">Редактировать организацию</h2>
@@ -74,7 +77,9 @@
 
       <div class="form__button-box">
         <button class="form__submit-btn" type="submit">Сохранить</button>
-        <button class="form__submit-btn" type="button">Закрыть</button>
+        <button (click)="isOpen = false" class="form__submit-btn" type="button">
+          Закрыть
+        </button>
       </div>
     </form>
   </div>
