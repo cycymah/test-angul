@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { CLOSE } from '../store/constants/constants';
 
 @Component({
   selector: 'app-popup-form-main',
@@ -6,11 +9,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./popupFormMain.component.css'],
 })
 export class popupFormMain {
-  isOpen: boolean = true;
+  isOpen$: Observable<any>;
+
+  constructor(private store: Store<any>) {
+    this.isOpen$ = this.store
+      .select('isOpen')
+      .subscribe((data) => (this.isOpen$ = data));
+  }
 
   handlerPopupClose() {
-    console.log(this.isOpen);
-    this.isOpen = true;
-    console.log(this.isOpen);
+    this.store.dispatch({ type: CLOSE });
   }
 }

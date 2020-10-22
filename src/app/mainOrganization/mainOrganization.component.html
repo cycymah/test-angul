@@ -1,23 +1,27 @@
 <li class="info__item">
   <div class="info__button-section">
-    <button (click)="onClickEdit()" class="info__btn" type="button">
+    <button (click)="handleClickEdit()" class="info__btn" type="button">
       Редактировать
     </button>
-    <button (click)="onClickAdd()" class="info__btn" type="button">
+    <button (click)="handleClickAdd()" class="info__btn" type="button">
       Добавить филиал
     </button>
   </div>
-  <p class="info__data">Название организации: {{ fullName }}</p>
-  <p class="info__data">Сокращенное название: {{ shortName }}</p>
-  <p class="info__data">ИНН: {{ inn }}</p>
-  <p class="info__data">КПП: {{ kpp }}</p>
-  <p class="info__data">Руководитель подразделения: {{ mainPerson }}</p>
-  <p class="info__data">Адрес: {{ adress }}</p>
-  <p class="info__data">Телефон: {{ phone }}</p>
+  <pre>{{ isOpen$ }}</pre>
+  <p class="info__data">Название организации: {{ mainCard.fullName }}</p>
+  <p class="info__data">Сокращенное название: {{ mainCard.shortName }}</p>
+  <p class="info__data">ИНН: {{ mainCard.inn }}</p>
+  <p class="info__data">КПП: {{ mainCard.kpp }}</p>
+  <p class="info__data">
+    Руководитель подразделения: {{ mainCard.mainPerson }}
+  </p>
+  <p class="info__data">Адрес: {{ mainCard.adress }}</p>
+  <p class="info__data">Телефон: {{ mainCard.phone }}</p>
 
   <ul class="info__filial-list">
-    <app-filial></app-filial>
-    <app-filial></app-filial>
-    <app-filial></app-filial>
+    <app-filial
+      *ngFor="let filial of filialOrganization"
+      [filialCard]="filial"
+    ></app-filial>
   </ul>
 </li>

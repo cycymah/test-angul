@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FilialInterface } from '../interfaces/FilialInterface';
 
 @Component({
   selector: 'app-filial',
@@ -6,7 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./filial.component.css'],
 })
 export class Filial {
-  adress = 'Адрес';
-  mainPerson = 'Должностное лицо';
-  phone = 'Телефон';
+  @Input() filialCard: FilialInterface[];
 }

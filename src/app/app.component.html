@@ -32,11 +32,13 @@
 
   <section class="info">
     <ul class="info__list">
-      <app-main-organization></app-main-organization>
-      <app-main-organization></app-main-organization>
-      <app-main-organization></app-main-organization>
+      <app-main-organization
+        *ngFor="let organization of mainOrganizations"
+        [mainCard]="organization"
+<!--        [isOpen]="isPopupFormMainOpen"-->
+      ></app-main-organization>
     </ul>
   </section>
 
-  <app-popup-form-main></app-popup-form-main>
+  <app-popup-form-main [isOpen]="isPopupFormMainOpen"></app-popup-form-main>
 </main>
