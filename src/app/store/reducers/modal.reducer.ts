@@ -1,12 +1,9 @@
-import { Action } from '@ngrx/store';
-import { OrganizationActions } from '../actions/organization.actions';
+import { Actions } from '../actions/organization.actions';
 import {
   OPEN_MAIN,
   CLOSE_MAIN,
   OPEN_FILIAL,
   CLOSE_FILIAL,
-  GET,
-  ADD_NEW,
 } from '../constants/constants';
 
 export interface State {
@@ -51,53 +48,70 @@ const initialState: State = {
       ],
     },
     {
-      fullName: 'ываф',
+      fullName: '1',
       shortName: 'ыва',
       inn: '2341234',
       kpp: '234',
       mainPerson: 'ва',
       adress: 'ыва',
       phone: 'ыва',
-      filial: [],
+      filial: [
+        {
+          adress: 'Адрес',
+          mainPerson: 'Должностное лицо',
+          phone: 'Телефон',
+        },
+        {
+          adress: '1',
+          mainPerson: 'Должностное лицо',
+          phone: 'Телефон',
+        },
+      ],
     },
     {
-      fullName: 'ываф',
+      fullName: '2',
       shortName: 'ыва',
       inn: '!!!!!',
       kpp: '234',
       mainPerson: 'ва',
       adress: 'ыва',
       phone: 'ыва',
-      filial: [],
+      filial: [
+        {
+          adress: 'Адрес',
+          mainPerson: 'Должностное лицо',
+          phone: 'Телефон',
+        },
+        {
+          adress: '1',
+          mainPerson: 'Должностное лицо',
+          phone: 'Телефон',
+        },
+      ],
     },
   ],
 };
 
-export const modalOpenReducer = (
-  state = initialState,
-  action: OrganizationActions
-) => {
-  console.log(action.type);
+export const modalOpenReducer = (state = initialState, action: Actions) => {
+  console.log(action.type, state);
 
   switch (action.type) {
-    case OPEN_MAIN: {
+    case Actions.OpenMain: {
       return { ...state, isOpenMain: true };
     }
-    case CLOSE_MAIN: {
+    case Actions.CloseMain: {
       return { ...state, isOpenMain: false };
     }
-    case OPEN_FILIAL: {
+    case Actions.OpenFilial: {
       return { ...state, isOpenFilial: true };
     }
-    case CLOSE_FILIAL: {
+    case Actions.CloseFilial: {
       return { ...state, isOpenFilial: false };
     }
-    case OrganizationActions.GetData: {
-      console.log(state.mainOffice);
-      return state.mainOffice;
+    case Actions.GetData: {
+      return state;
     }
-    case OrganizationActions.AddData: {
-      console.log(action.payload.inn);
+    case Actions.AddData: {
       return {
         ...state,
         mainOffice: [

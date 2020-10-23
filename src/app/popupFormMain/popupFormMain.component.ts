@@ -2,8 +2,11 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { FormGroup, FormControl } from '@angular/forms';
-import { CLOSE_MAIN } from '../store/constants/constants';
-import { AddMainOrganization } from '../store/actions/organization.actions';
+import {
+  CloseMain,
+  OpenMain,
+  AddMainOrganization,
+} from '../store/actions/organization.actions';
 
 @Component({
   selector: 'app-popup-form-main',
@@ -15,7 +18,7 @@ export class popupFormMain {
   subscribeData: any;
 
   constructor(private store: Store<any>) {
-    this.isOpen$ = this.store.select('isOpen');
+    this.isOpen$ = this.store.select('reducer');
     this.subscribeData = this.isOpen$.subscribe(
       (data) => (this.subscribeData = data)
     );
@@ -53,11 +56,10 @@ export class popupFormMain {
         phone,
       })
     );
-    this.store.dispatch({ type: CLOSE_MAIN });
-    // console.log(fullName, shortName, inn, kpp, mainPerson, adress, phone);
+    this.store.dispatch(new CloseMain());
   };
 
   handlerPopupClose = () => {
-    this.store.dispatch({ type: CLOSE_MAIN });
+    this.store.dispatch(new CloseMain());
   };
 }

@@ -40,7 +40,7 @@
   <section class="info">
     <ul class="info__list">
       <app-main-organization
-        *ngFor="let organization of mainOrganizations"
+        *ngFor="let organization of this.subscribeData"
         [mainCard]="organization"
       ></app-main-organization>
     </ul>

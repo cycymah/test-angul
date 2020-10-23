@@ -24,12 +24,7 @@ import { modalOpenReducer } from './store/reducers/modal.reducer';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot(
-      {
-        isOpenMain: modalOpenReducer,
-      },
-      {}
-    ),
+    StoreModule.forRoot({ reducer: modalOpenReducer }),
     EffectsModule.forRoot([]),
   ],
   providers: [],

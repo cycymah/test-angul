@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { CLOSE_FILIAL } from '../store/constants/constants';
+import { CloseFilial } from '../store/actions/organization.actions';
 
 @Component({
   selector: 'app-popup-form-filial',
@@ -10,16 +10,14 @@ import { CLOSE_FILIAL } from '../store/constants/constants';
 })
 export class popupFormFilial {
   isOpen$: Observable<any>;
-  subscribeData$: any;
+  subscribeData: boolean;
 
   constructor(private store: Store<any>) {
-    this.isOpen$ = this.store.select('isOpen');
-    this.subscribeData$ = this.isOpen$.subscribe(
-      (data) => (this.subscribeData$ = data)
-    );
+    this.isOpen$ = this.store.select('reducer');
+    this.isOpen$.subscribe((data) => (this.subscribeData = data.isOpenFilial));
   }
 
   handlerPopupClose = () => {
-    this.store.dispatch({ type: CLOSE_FILIAL });
+    this.store.dispatch(new CloseFilial());
   };
 }
