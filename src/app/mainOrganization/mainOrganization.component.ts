@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import MainOrganizationInterface from '../interfaces/MainOrganizationInterface';
 import FilialInterface from '../interfaces/FilialInterface';
-import { OPEN_MAIN, CLOSE_MAIN } from '../store/constants/constants';
+import { OPEN_MAIN, CLOSE_MAIN, GET } from '../store/constants/constants';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -23,32 +23,9 @@ export class MainOrganization implements OnInit {
     );
   }
 
-  filialOrganization: FilialInterface[] = [
-    {
-      adress: 'Адрес',
-      mainPerson: 'Должностное лицо',
-      phone: 'Телефон',
-    },
-    {
-      adress: '1',
-      mainPerson: 'Должностное лицо',
-      phone: 'Телефон',
-    },
-    {
-      adress: '2',
-      mainPerson: 'Должностное лицо',
-      phone: 'Телефон',
-    },
-    {
-      adress: '3',
-      mainPerson: 'Должностное лицо',
-      phone: 'Телефон',
-    },
-  ];
-
   handleClickAdd = () => {
     console.log(this.subscribeData$);
-    this.store.dispatch({ type: CLOSE_MAIN });
+    this.store.dispatch({ type: GET });
   };
 
   handleClickEdit = () => {

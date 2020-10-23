@@ -11,7 +11,6 @@ import { popupFormMain } from './popupFormMain/popupFormMain.component';
 import { popupFormFilial } from './popupFormFilial/popupFormFilial.component';
 
 import { modalOpenReducer } from './store/reducers/modal.reducer';
-import { organizationReducer } from './store/reducers/organization.reducer';
 
 @NgModule({
   declarations: [
@@ -27,8 +26,7 @@ import { organizationReducer } from './store/reducers/organization.reducer';
     ReactiveFormsModule,
     StoreModule.forRoot(
       {
-        isOpen: modalOpenReducer,
-        organizationData: organizationReducer,
+        isOpenMain: modalOpenReducer,
       },
       {}
     ),

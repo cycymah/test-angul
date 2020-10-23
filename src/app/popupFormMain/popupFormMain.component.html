@@ -1,6 +1,6 @@
 <div
   class="modal page__modal modal_target_mainOrg"
-  [class.modal_active]="subscribeData$.isOpenMain === true"
+  [class.modal_active]="subscribeData.isOpenMain === true"
 >
   <div (click)="handlerPopupClose()" class="modal__overlay"></div>
   <div class="form">
@@ -9,6 +9,8 @@
       action="#"
       class="form__section form__section_target_mainOrg"
       name="editMainOrg"
+      [formGroup]="organizationForm"
+      (ngSubmit)="handleSubmit()"
       novalidate
     >
       <label class="form__field">
@@ -16,7 +18,7 @@
           type="text"
           class="form__input form__input_field_nameOrg"
           placeholder="Имя организации"
-          name="nameOrg"
+          formControlName="fullName"
           required
         />
       </label>
@@ -25,7 +27,7 @@
           type="text"
           class="form__input form__input_field_shortOrg"
           placeholder="Короткое наименование организации"
-          name="shortOrg"
+          formControlName="shortName"
           required
         />
       </label>
@@ -34,7 +36,7 @@
           type="text"
           class="form__input form__input_field_inn"
           placeholder="ИНН"
-          name="inn"
+          formControlName="inn"
           required
         />
       </label>
@@ -43,7 +45,7 @@
           type="text"
           class="form__input form__input_field_kpp"
           placeholder="КПП"
-          name="kpp"
+          formControlName="kpp"
           required
         />
       </label>
@@ -52,7 +54,7 @@
           type="text"
           class="form__input form__input_field_mainPerson"
           placeholder="Руководитель подразделения"
-          name="mainPerson"
+          formControlName="mainPerson"
           required
         />
       </label>
@@ -61,7 +63,7 @@
           type="text"
           class="form__input form__input_field_adress"
           placeholder="Адрес"
-          name="adress"
+          formControlName="adress"
           required
         />
       </label>
@@ -70,7 +72,7 @@
           type="text"
           class="form__input form__input_field_phone"
           placeholder="Телефон"
-          name="phone"
+          formControlName="phone"
           required
         />
       </label>
