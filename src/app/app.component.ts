@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { OpenMain } from './store/actions/organization.actions';
-import { GetMainData } from './store/actions/organization.actions';
+import { OpenMain, GetMainData } from './store/actions/organization.actions';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -20,19 +20,20 @@ export class AppComponent implements OnInit {
 
   constructor(private store: Store<any>) {
     this.dataCards$ = this.store.select('reducer');
-    this.dataCards$.subscribe((data) => {
-      console.log(data.mainOffice);
-      this.subscribeData = data.mainOffice;
-    });
   }
-  // console.("asdas");
 
   ngOnInit() {
     this.store.dispatch(new GetMainData());
+    this.dataCards$.subscribe((data) => {
+      this.subscribeData = data.mainOffice;
+    });
   }
 
+  handleAddMain = () => {
+    this.store.dispatch(new OpenMain());
+  };
+
   handleSubmit = () => {
-    console.log(this.subscribeData);
     const { password, login } = this.autorizationForm.value;
     this.store.dispatch(new OpenMain());
   };

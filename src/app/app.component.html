@@ -38,6 +38,9 @@
   </section>
 
   <section class="info">
+    <button (click)="handleAddMain()" class="info__btn" type="button">
+      Добавить офис
+    </button>
     <ul class="info__list">
       <app-main-organization
         *ngFor="let organization of this.subscribeData"

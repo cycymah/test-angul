@@ -1,7 +1,5 @@
 import { Component, Input } from '@angular/core';
-import MainOrganizationInterface from '../interfaces/MainOrganizationInterface';
-import FilialInterface from '../interfaces/FilialInterface';
-import { OPEN_MAIN, CLOSE_MAIN, GET } from '../store/constants/constants';
+import { GET } from '../store/constants/constants';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { OpenMain } from '../store/actions/organization.actions';
@@ -12,8 +10,8 @@ import { OpenMain } from '../store/actions/organization.actions';
   styleUrls: ['./mainOrganization.component.css'],
 })
 export class MainOrganization {
-  @Input() mainCard: MainOrganizationInterface[];
-  // Прокидываем карточки с главного компонента
+  @Input() mainCard;
+
   isOpen$: Observable<any>;
   subscribeData: any;
 

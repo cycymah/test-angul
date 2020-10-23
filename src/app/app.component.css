@@ -19,6 +19,20 @@
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
 }
+.info__btn {
+  min-height: 30px;
+  background-color: black;
+  color: white;
+  box-sizing: border-box;
+  border: 0;
+  margin-bottom: 5px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.info__btn:hover {
+  transition: 0.5s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.8);
+}
 
 .info__list {
   display: flex;

@@ -24,26 +24,31 @@ const initialState: State = {
       mainPerson: 'Брых',
       adress: 'Адрес',
       phone: 'Телефон',
+      id: 1,
       filial: [
         {
           adress: 'Адрес',
           mainPerson: 'Должностное лицо',
           phone: 'Телефон',
+          id: 1,
         },
         {
           adress: '1',
           mainPerson: 'Должностное лицо',
           phone: 'Телефон',
+          id: 2,
         },
         {
           adress: '2',
           mainPerson: 'Должностное лицо',
           phone: 'Телефон',
+          id: 3,
         },
         {
           adress: '3',
           mainPerson: 'Должностное лицо',
           phone: 'Телефон',
+          id: 4,
         },
       ],
     },
@@ -55,16 +60,19 @@ const initialState: State = {
       mainPerson: 'ва',
       adress: 'ыва',
       phone: 'ыва',
+      id: 2,
       filial: [
         {
           adress: 'Адрес',
           mainPerson: 'Должностное лицо',
           phone: 'Телефон',
+          id: 1,
         },
         {
           adress: '1',
           mainPerson: 'Должностное лицо',
           phone: 'Телефон',
+          id: 2,
         },
       ],
     },
@@ -76,16 +84,19 @@ const initialState: State = {
       mainPerson: 'ва',
       adress: 'ыва',
       phone: 'ыва',
+      id: 3,
       filial: [
         {
           adress: 'Адрес',
           mainPerson: 'Должностное лицо',
           phone: 'Телефон',
+          id: 1,
         },
         {
           adress: '1',
           mainPerson: 'Должностное лицо',
           phone: 'Телефон',
+          id: 2,
         },
       ],
     },

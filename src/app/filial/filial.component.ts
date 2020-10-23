@@ -20,7 +20,6 @@ export class Filial {
   }
 
   handleEdit = () => {
-    // console.log(this.subscribeData);
     this.store.dispatch(new OpenFilial());
   };
 }
