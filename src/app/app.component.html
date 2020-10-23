@@ -1,13 +1,19 @@
 <main class="container">
   <section class="autorization">
     <div class="form">
-      <form action="#" class="form__section" name="formProfile" novalidate>
+      <form
+        (ngSubmit)="handleSubmit(event)"
+        [formGroup]="autorizationForm"
+        action="#"
+        class="form__section"
+        novalidate
+      >
         <label class="form__field">
           <input
             type="text"
             class="form__input"
             placeholder="Логин"
-            name="login"
+            formControlName="login"
             required
             minlength="2"
             maxlength="40"
@@ -16,9 +22,10 @@
         <label class="form__field">
           <input
             type="password"
+            autocomplete="password"
             class="form__input"
             placeholder="Пароль"
-            name="password"
+            formControlName="password"
             required
             minlength="2"
             maxlength="30"
@@ -35,10 +42,10 @@
       <app-main-organization
         *ngFor="let organization of mainOrganizations"
         [mainCard]="organization"
-<!--        [isOpen]="isPopupFormMainOpen"-->
       ></app-main-organization>
     </ul>
   </section>
 
-  <app-popup-form-main [isOpen]="isPopupFormMainOpen"></app-popup-form-main>
+  <app-popup-form-main></app-popup-form-main>
+  <app-popup-form-filial></app-popup-form-filial>
 </main>

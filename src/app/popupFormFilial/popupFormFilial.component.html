@@ -1,52 +1,16 @@
 <div
   class="modal page__modal modal_target_mainOrg"
-  [class.modal_active]="subscribeData$.isOpenMain === true"
+  [class.modal_active]="this.subscribeData$.isOpenFilial === true"
 >
   <div (click)="handlerPopupClose()" class="modal__overlay"></div>
   <div class="form">
-    <h2 class="form__title">Редактировать организацию</h2>
+    <h2 class="form__title">Редактировать филиал</h2>
     <form
       action="#"
       class="form__section form__section_target_mainOrg"
       name="editMainOrg"
       novalidate
     >
-      <label class="form__field">
-        <input
-          type="text"
-          class="form__input form__input_field_nameOrg"
-          placeholder="Имя организации"
-          name="nameOrg"
-          required
-        />
-      </label>
-      <label class="form__field">
-        <input
-          type="text"
-          class="form__input form__input_field_shortOrg"
-          placeholder="Короткое наименование организации"
-          name="shortOrg"
-          required
-        />
-      </label>
-      <label class="form__field">
-        <input
-          type="text"
-          class="form__input form__input_field_inn"
-          placeholder="ИНН"
-          name="inn"
-          required
-        />
-      </label>
-      <label class="form__field">
-        <input
-          type="text"
-          class="form__input form__input_field_kpp"
-          placeholder="КПП"
-          name="kpp"
-          required
-        />
-      </label>
       <label class="form__field">
         <input
           type="text"

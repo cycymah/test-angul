@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import MainOrganizationInterface from '../interfaces/MainOrganizationInterface';
 import FilialInterface from '../interfaces/FilialInterface';
-import { OPEN, CLOSE } from '../store/constants/constants';
+import { OPEN_MAIN, CLOSE_MAIN } from '../store/constants/constants';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -14,11 +14,13 @@ export class MainOrganization implements OnInit {
   @Input() mainCard: MainOrganizationInterface[]; // Прокидываем карточки с главного компонента
 
   isOpen$: Observable<any>;
+  subscribeData$: any;
 
   constructor(private store: Store<any>) {
-    this.isOpen$ = this.store
-      .select('isOpen')
-      .subscribe((data) => (this.isOpen$ = data));
+    this.isOpen$ = this.store.select('isOpen');
+    this.subscribeData$ = this.isOpen$.subscribe(
+      (data) => (this.subscribeData$ = data)
+    );
   }
 
   filialOrganization: FilialInterface[] = [
@@ -45,10 +47,12 @@ export class MainOrganization implements OnInit {
   ];
 
   handleClickAdd = () => {
-    this.store.dispatch({ type: CLOSE });
+    console.log(this.subscribeData$);
+    this.store.dispatch({ type: CLOSE_MAIN });
   };
 
   handleClickEdit = () => {
-    this.store.dispatch({ type: OPEN });
+    console.log(this.subscribeData$);
+    this.store.dispatch({ type: OPEN_MAIN });
   };
 }

@@ -1,16 +1,27 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { OPEN, CLOSE } from '../constants/constants';
+import {
+  OPEN_MAIN,
+  CLOSE_MAIN,
+  OPEN_FILIAL,
+  CLOSE_FILIAL,
+} from '../constants/constants';
 
-const initialPopupState = false;
+const initialPopup = { isOpenMain: false, isOpenFilial: false };
 
-export const modalReducer = (state = initialPopupState, action: Action) => {
-  // console.log(action.type, state);
+export const modalOpenReducer = (state = initialPopup, action: Action) => {
+  console.log(action, state);
   switch (action.type) {
-    case OPEN: {
-      return (state = true);
+    case OPEN_MAIN: {
+      return { isOpenMain: true };
     }
-    case CLOSE: {
-      return (state = false);
+    case CLOSE_MAIN: {
+      return { isOpenMain: false };
+    }
+    case OPEN_FILIAL: {
+      return { isOpenFilial: true };
+    }
+    case CLOSE_FILIAL: {
+      return { isOpenFilial: false };
     }
     default: {
       return state;
