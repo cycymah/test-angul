@@ -8,18 +8,20 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppComponent } from './app.component';
 import { MainOrganization } from './mainOrganization/mainOrganization.component';
 import { Filial } from './filial/filial.component';
-import { popupFormMain } from './popupFormMain/popupFormMain.component';
-import { popupFormFilial } from './popupFormFilial/popupFormFilial.component';
+import { PopupFormMain } from './popupFormMain/popupFormMain.component';
+import { PopupFormFilial } from './popupFormFilial/popupFormFilial.component';
 
 import { modalOpenReducer } from './store/reducers/modal.reducer';
+import { PopupFormMainEditComponent } from './popupFormMainEdit/popupFormMainEdit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainOrganization,
     Filial,
-    popupFormMain,
-    popupFormFilial,
+    PopupFormMain,
+    PopupFormFilial,
+    PopupFormMainEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,7 @@ import { modalOpenReducer } from './store/reducers/modal.reducer';
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot({ reducer: modalOpenReducer }),
-    EffectsModule.forRoot([]),
+    // EffectsModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent],

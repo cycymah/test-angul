@@ -39,17 +39,17 @@
 
   <section class="info">
     <button (click)="handleAddMain()" class="info__btn" type="button">
-      Добавить офис
+      Добавить головную организацию
     </button>
     <ul class="info__list">
       <app-main-organization
-        *ngFor="let organization of this.subscribeData; id as index"
+        *ngFor="let organization of subscribeData"
         [mainCard]="organization"
-        [idMain]="id"
       ></app-main-organization>
     </ul>
   </section>
 
   <app-popup-form-main></app-popup-form-main>
+  <app-popup-form-main-edit></app-popup-form-main-edit>
   <app-popup-form-filial></app-popup-form-filial>
 </main>

@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { CloseFilial } from '../store/actions/organization.actions';
+import { ClosePopups } from '../store/actions/organization.actions';
 
 @Component({
   selector: 'app-popup-form-filial',
   templateUrl: './popupFormFilial.component.html',
   styleUrls: ['./popupFormFilial.component.css'],
 })
-export class popupFormFilial {
+export class PopupFormFilial {
   isOpen$: Observable<any>;
   subscribeData: boolean;
 
@@ -20,6 +20,6 @@ export class popupFormFilial {
   }
 
   handlerPopupClose = () => {
-    this.store.dispatch(new CloseFilial());
+    this.store.dispatch(new ClosePopups());
   };
 }

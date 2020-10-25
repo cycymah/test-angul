@@ -3,6 +3,7 @@ import { Actions } from '../actions/organization.actions';
 export interface State {
   isOpenMain: boolean;
   isOpenFilial: boolean;
+  isOpenEditMain: boolean;
   officeModalData: any;
   mainOffice: any;
 }
@@ -10,6 +11,7 @@ export interface State {
 const initialState: State = {
   isOpenMain: false,
   isOpenFilial: false,
+  isOpenEditMain: false,
   officeModalData: {
     fullName: '',
     shortName: '',
@@ -115,14 +117,20 @@ export const modalOpenReducer = (state = initialState, action: Actions) => {
     case Actions.OpenMain: {
       return { ...state, isOpenMain: true };
     }
-    case Actions.CloseMain: {
-      return { ...state, isOpenMain: false };
+    case Actions.OpenEditMain: {
+      return { ...state, isOpenEditMain: true };
     }
+
     case Actions.OpenFilial: {
       return { ...state, isOpenFilial: true };
     }
-    case Actions.CloseFilial: {
-      return { ...state, isOpenFilial: false };
+    case Actions.ClosePopups: {
+      return {
+        ...state,
+        isOpenFilial: false,
+        isOpenMain: false,
+        isOpenEditMain: false,
+      };
     }
     case Actions.GetData: {
       return state;

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -8,11 +8,11 @@ import {
 } from '../store/actions/organization.actions';
 
 @Component({
-  selector: 'app-popup-form-main',
-  templateUrl: './popupFormMain.component.html',
-  styleUrls: ['./popupFormMain.component.css'],
+  selector: 'app-popup-form-main-edit',
+  templateUrl: './popupFormMainEdit.component.html',
+  styleUrls: ['./popupFormMainEdit.component.css'],
 })
-export class PopupFormMain implements OnInit, Input {
+export class PopupFormMainEditComponent {
   isOpen$: Observable<any>;
   subscribeData: any;
   @Input() idMain: number;
@@ -20,7 +20,7 @@ export class PopupFormMain implements OnInit, Input {
   constructor(private store: Store<any>) {
     this.isOpen$ = this.store.select('reducer');
     this.subscribeData = this.isOpen$.subscribe(
-      (data) => (this.subscribeData = data)
+      (data) => (this.subscribeData = data.isOpenEditMain)
     );
   }
 
@@ -34,9 +34,6 @@ export class PopupFormMain implements OnInit, Input {
     phone: new FormControl(),
   });
 
-  // ngOnChanges() {
-  //   console.log(this.subscribeData.officeModalData);
-  // }
   handleSubmit = () => {
     const {
       fullName,

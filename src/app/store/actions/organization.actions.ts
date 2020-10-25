@@ -5,9 +5,9 @@ export enum Actions {
   AddData = '[Organization] AddData',
   ChangeData = '[Organization] ChangeData',
   OpenMain = '[Popups] OpenMain',
-  CloseMain = '[Popups] CloseMain',
+  OpenEditMain = '[Popups] OpenEditMain',
+  ClosePopups = '[Popups] ClosePopups',
   OpenFilial = '[Popups] OpenFilial',
-  CloseFilial = '[Popups] CloseFilial',
   addPopupInfo = '[Popups] AddPopupInfo',
 }
 
@@ -34,15 +34,14 @@ export class AddMainOrganization implements Action {
 export class OpenMain implements Action {
   readonly type = Actions.OpenMain;
 }
-
-export class CloseMain implements Action {
-  readonly type = Actions.CloseMain;
+export class OpenEditMain implements Action {
+  readonly type = Actions.OpenEditMain;
 }
 export class OpenFilial implements Action {
   readonly type = Actions.OpenFilial;
 }
-export class CloseFilial implements Action {
-  readonly type = Actions.CloseFilial;
+export class ClosePopups implements Action {
+  readonly type = Actions.ClosePopups;
 }
 
 export class AddPopupInfo implements Action {

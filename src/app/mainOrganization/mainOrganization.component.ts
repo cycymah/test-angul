@@ -1,17 +1,15 @@
 import { Component, Input } from '@angular/core';
-import { GET } from '../store/constants/constants';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { OpenMain, AddPopupInfo } from '../store/actions/organization.actions';
+import { OpenEditMain } from '../store/actions/organization.actions';
 
 @Component({
   selector: 'app-main-organization',
   templateUrl: './mainOrganization.component.html',
   styleUrls: ['./mainOrganization.component.css'],
 })
-export class MainOrganization {
+export class MainOrganization implements Input {
   @Input() mainCard;
-  @Input() idMain;
 
   isOpen$: Observable<any>;
   subscribeData: any;
@@ -24,11 +22,10 @@ export class MainOrganization {
   }
 
   handleClickAdd = () => {
-    this.store.dispatch({ type: GET });
+    console.log(this.mainCard);
   };
 
   handleClickEdit = () => {
-    this.store.dispatch(new AddPopupInfo(this.mainCard));
-    this.store.dispatch(new OpenMain());
+    this.store.dispatch(new OpenEditMain());
   };
 }

@@ -1,10 +1,10 @@
 <div
   class="modal page__modal modal_target_mainOrg"
-  [class.modal_active]="subscribeData.isOpenMain === true"
+  [class.modal_active]="subscribeData === true"
 >
   <div (click)="handlerPopupClose()" class="modal__overlay"></div>
   <div class="form">
-    <h2 class="form__title">Добавить организацию</h2>
+    <h2 class="form__title">Редактировать офис</h2>
     <form
       action="#"
       class="form__section form__section_target_mainOrg"
