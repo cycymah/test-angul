@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { FormGroup, FormControl } from '@angular/forms';
 import {
   CloseMain,
-  OpenMain,
   AddMainOrganization,
 } from '../store/actions/organization.actions';
 
@@ -13,7 +12,7 @@ import {
   templateUrl: './popupFormMain.component.html',
   styleUrls: ['./popupFormMain.component.css'],
 })
-export class popupFormMain implements OnInit {
+export class popupFormMain implements OnInit, OnChanges {
   isOpen$: Observable<any>;
   subscribeData: any;
 
@@ -33,7 +32,10 @@ export class popupFormMain implements OnInit {
     adress: new FormControl(),
     phone: new FormControl(),
   });
-  // ngOnInit() {}
+
+  // ngOnChanges() {
+  //   console.log(this.subscribeData.officeModalData);
+  // }
   handleSubmit = () => {
     const {
       fullName,
@@ -60,6 +62,7 @@ export class popupFormMain implements OnInit {
   };
 
   handlerPopupClose = () => {
+    console.log(this.subscribeData.officeModalData);
     this.store.dispatch(new CloseMain());
   };
 }

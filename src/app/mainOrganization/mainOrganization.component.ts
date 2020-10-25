@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { GET } from '../store/constants/constants';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { OpenMain } from '../store/actions/organization.actions';
+import { OpenMain, AddPopupInfo } from '../store/actions/organization.actions';
 
 @Component({
   selector: 'app-main-organization',
@@ -24,12 +24,11 @@ export class MainOrganization {
   }
 
   handleClickAdd = () => {
-    console.log(this.idMain);
-    console.log(this.mainCard);
     this.store.dispatch({ type: GET });
   };
 
   handleClickEdit = () => {
+    this.store.dispatch(new AddPopupInfo(this.mainCard));
     this.store.dispatch(new OpenMain());
   };
 }

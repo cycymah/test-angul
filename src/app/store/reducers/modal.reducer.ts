@@ -1,20 +1,25 @@
 import { Actions } from '../actions/organization.actions';
-import {
-  OPEN_MAIN,
-  CLOSE_MAIN,
-  OPEN_FILIAL,
-  CLOSE_FILIAL,
-} from '../constants/constants';
 
 export interface State {
   isOpenMain: boolean;
   isOpenFilial: boolean;
+  officeModalData: any;
   mainOffice: any;
 }
 
 const initialState: State = {
   isOpenMain: false,
   isOpenFilial: false,
+  officeModalData: {
+    fullName: '',
+    shortName: '',
+    inn: '',
+    kpp: '',
+    mainPerson: '',
+    adress: '',
+    phone: '',
+    id: '',
+  },
   mainOffice: [
     {
       fullName: 'ФЫафывафыв',
@@ -137,6 +142,20 @@ export const modalOpenReducer = (state = initialState, action: Actions) => {
             phone: action.payload.phone,
           },
         ],
+      };
+    }
+    case Actions.addPopupInfo: {
+      return {
+        ...state,
+        officeModalData: {
+          fullName: action.payload.fullName,
+          shortName: action.payload.shortName,
+          inn: action.payload.inn,
+          kpp: action.payload.kpp,
+          mainPerson: action.payload.mainPerson,
+          adress: action.payload.adress,
+          phone: action.payload.phone,
+        },
       };
     }
 

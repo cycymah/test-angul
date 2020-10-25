@@ -8,6 +8,7 @@ export enum Actions {
   CloseMain = '[Popups] CloseMain',
   OpenFilial = '[Popups] OpenFilial',
   CloseFilial = '[Popups] CloseFilial',
+  addPopupInfo = '[Popups] AddPopupInfo',
 }
 
 export class GetMainData implements Action {
@@ -33,6 +34,7 @@ export class AddMainOrganization implements Action {
 export class OpenMain implements Action {
   readonly type = Actions.OpenMain;
 }
+
 export class CloseMain implements Action {
   readonly type = Actions.CloseMain;
 }
@@ -41,6 +43,22 @@ export class OpenFilial implements Action {
 }
 export class CloseFilial implements Action {
   readonly type = Actions.CloseFilial;
+}
+
+export class AddPopupInfo implements Action {
+  readonly type = Actions.addPopupInfo;
+
+  constructor(
+    public payload: {
+      fullName: string;
+      shortName: string;
+      inn: string;
+      kpp: string;
+      mainPerson: string;
+      adress: string;
+      phone: string;
+    }
+  ) {}
 }
 
 // export

@@ -15,7 +15,6 @@ export class popupFormFilial {
   constructor(private store: Store<any>) {
     this.isOpen$ = this.store.select('reducer');
     this.isOpen$.subscribe((data) => {
-      console.log(data);
       this.subscribeData = data.isOpenFilial;
     });
   }
