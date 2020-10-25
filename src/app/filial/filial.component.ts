@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import FilialInterface from '../interfaces/FilialInterface';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { CloseFilial, OpenFilial } from '../store/actions/organization.actions';
@@ -10,7 +9,7 @@ import { CloseFilial, OpenFilial } from '../store/actions/organization.actions';
   styleUrls: ['./filial.component.css'],
 })
 export class Filial {
-  @Input() filialCard: FilialInterface[];
+  @Input() filialCard;
   isOpen$: Observable<any>;
   subscribeData: boolean;
 

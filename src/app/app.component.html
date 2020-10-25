@@ -43,8 +43,9 @@
     </button>
     <ul class="info__list">
       <app-main-organization
-        *ngFor="let organization of this.subscribeData"
+        *ngFor="let organization of this.subscribeData; id as index"
         [mainCard]="organization"
+        [idMain]="id"
       ></app-main-organization>
     </ul>
   </section>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -13,7 +13,7 @@ import {
   templateUrl: './popupFormMain.component.html',
   styleUrls: ['./popupFormMain.component.css'],
 })
-export class popupFormMain {
+export class popupFormMain implements OnInit {
   isOpen$: Observable<any>;
   subscribeData: any;
 
@@ -33,7 +33,7 @@ export class popupFormMain {
     adress: new FormControl(),
     phone: new FormControl(),
   });
-
+  // ngOnInit() {}
   handleSubmit = () => {
     const {
       fullName,

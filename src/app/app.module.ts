@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+// import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { MainOrganization } from './mainOrganization/mainOrganization.component';
@@ -22,6 +23,7 @@ import { modalOpenReducer } from './store/reducers/modal.reducer';
   ],
   imports: [
     BrowserModule,
+    // CommonModule,
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot({ reducer: modalOpenReducer }),

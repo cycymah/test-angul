@@ -11,6 +11,7 @@ import { OpenMain } from '../store/actions/organization.actions';
 })
 export class MainOrganization {
   @Input() mainCard;
+  @Input() idMain;
 
   isOpen$: Observable<any>;
   subscribeData: any;
@@ -23,6 +24,8 @@ export class MainOrganization {
   }
 
   handleClickAdd = () => {
+    console.log(this.idMain);
+    console.log(this.mainCard);
     this.store.dispatch({ type: GET });
   };
 
