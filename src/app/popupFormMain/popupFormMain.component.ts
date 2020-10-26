@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { FormGroup, FormControl } from '@angular/forms';
 import {
   ClosePopups,
-  AddMainOrganization,
+  AddOrganization,
 } from '../store/actions/organization.actions';
 
 @Component({
@@ -12,7 +12,7 @@ import {
   templateUrl: './popupFormMain.component.html',
   styleUrls: ['./popupFormMain.component.css'],
 })
-export class PopupFormMain implements OnInit, Input {
+export class PopupFormMain implements Input {
   isOpen$: Observable<any>;
   subscribeData: any;
   @Input() idMain: number;
@@ -34,9 +34,6 @@ export class PopupFormMain implements OnInit, Input {
     phone: new FormControl(),
   });
 
-  // ngOnChanges() {
-  //   console.log(this.subscribeData.officeModalData);
-  // }
   handleSubmit = () => {
     const {
       fullName,
@@ -49,7 +46,7 @@ export class PopupFormMain implements OnInit, Input {
     } = this.organizationForm.value;
 
     this.store.dispatch(
-      new AddMainOrganization({
+      new AddOrganization({
         fullName,
         shortName,
         inn,

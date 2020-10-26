@@ -1,0 +1,54 @@
+<div
+  class="modal page__modal modal_target_mainOrg"
+  [class.modal_active]="this.subscribeData.isOpenAddFilial === true"
+>
+  <div (click)="handlerPopupClose()" class="modal__overlay"></div>
+  <div class="form">
+    <h2 class="form__title">Добавить</h2>
+    <form
+      action="#"
+      class="form__section form__section_target_mainOrg"
+      name="editMainOrg"
+      novalidate
+    >
+      <label class="form__field">
+        <input
+          type="text"
+          class="form__input form__input_field_mainPerson"
+          placeholder="Руководитель подразделения"
+          name="mainPerson"
+          required
+        />
+      </label>
+      <label class="form__field">
+        <input
+          type="text"
+          class="form__input form__input_field_adress"
+          placeholder="Адрес"
+          name="adress"
+          required
+        />
+      </label>
+      <label class="form__field">
+        <input
+          type="text"
+          class="form__input form__input_field_phone"
+          placeholder="Телефон"
+          name="phone"
+          required
+        />
+      </label>
+
+      <div class="form__button-box">
+        <button class="form__submit-btn" type="submit">Сохранить</button>
+        <button
+          (click)="handlerPopupClose()"
+          class="form__submit-btn"
+          type="button"
+        >
+          Закрыть
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

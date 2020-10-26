@@ -1,7 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { OpenEditMain } from '../store/actions/organization.actions';
+import {
+  OpenEditMain,
+  AddPopupInfo,
+  OpenAddFilial,
+} from '../store/actions/organization.actions';
 
 @Component({
   selector: 'app-main-organization',
@@ -22,10 +26,34 @@ export class MainOrganization implements Input {
   }
 
   handleClickAdd = () => {
-    console.log(this.mainCard);
+    this.store.dispatch(
+      new AddPopupInfo({
+        fullName: this.mainCard.fullName,
+        shortName: this.mainCard.shortName,
+        inn: this.mainCard.inn,
+        kpp: this.mainCard.kpp,
+        mainPerson: this.mainCard.mainPerson,
+        adress: this.mainCard.adress,
+        phone: this.mainCard.phone,
+        id: this.mainCard.id,
+      })
+    );
+    this.store.dispatch(new OpenAddFilial());
   };
 
   handleClickEdit = () => {
+    this.store.dispatch(
+      new AddPopupInfo({
+        fullName: this.mainCard.fullName,
+        shortName: this.mainCard.shortName,
+        inn: this.mainCard.inn,
+        kpp: this.mainCard.kpp,
+        mainPerson: this.mainCard.mainPerson,
+        adress: this.mainCard.adress,
+        phone: this.mainCard.phone,
+        id: this.mainCard.id,
+      })
+    );
     this.store.dispatch(new OpenEditMain());
   };
 }

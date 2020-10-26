@@ -4,6 +4,7 @@ export interface State {
   isOpenMain: boolean;
   isOpenFilial: boolean;
   isOpenEditMain: boolean;
+  isOpenAddFilial: boolean;
   officeModalData: any;
   mainOffice: any;
 }
@@ -12,6 +13,7 @@ const initialState: State = {
   isOpenMain: false,
   isOpenFilial: false,
   isOpenEditMain: false,
+  isOpenAddFilial: false,
   officeModalData: {
     fullName: '',
     shortName: '',
@@ -20,7 +22,7 @@ const initialState: State = {
     mainPerson: '',
     adress: '',
     phone: '',
-    id: '',
+    id: 0,
   },
   mainOffice: [
     {
@@ -111,7 +113,7 @@ const initialState: State = {
 };
 
 export const modalOpenReducer = (state = initialState, action: Actions) => {
-  console.log(action.type, state);
+  console.log(action.type, action);
 
   switch (action.type) {
     case Actions.OpenMain: {
@@ -124,17 +126,25 @@ export const modalOpenReducer = (state = initialState, action: Actions) => {
     case Actions.OpenFilial: {
       return { ...state, isOpenFilial: true };
     }
+
+    case Actions.OpenAddFilial: {
+      return { ...state, isOpenAddFilial: true };
+    }
+
     case Actions.ClosePopups: {
       return {
         ...state,
         isOpenFilial: false,
         isOpenMain: false,
         isOpenEditMain: false,
+        isOpenAddFilial: false,
       };
     }
+
     case Actions.GetData: {
       return state;
     }
+
     case Actions.AddData: {
       return {
         ...state,
@@ -152,6 +162,7 @@ export const modalOpenReducer = (state = initialState, action: Actions) => {
         ],
       };
     }
+
     case Actions.addPopupInfo: {
       return {
         ...state,
@@ -163,7 +174,21 @@ export const modalOpenReducer = (state = initialState, action: Actions) => {
           mainPerson: action.payload.mainPerson,
           adress: action.payload.adress,
           phone: action.payload.phone,
+          id: action.payload.id,
         },
+      };
+    }
+
+    case Actions.EditMainOrganization: {
+      const newState = state.mainOffice.map((item) =>
+        item.id === action.payload.id
+          ? { ...action.payload, filial: item.filial }
+          : item
+      );
+
+      return {
+        ...state,
+        mainOffice: newState,
       };
     }
 

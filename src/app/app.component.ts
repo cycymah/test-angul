@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -9,7 +9,7 @@ import { OpenMain, GetMainData } from './store/actions/organization.actions';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   autorizationForm = new FormGroup({
     login: new FormControl(),
     password: new FormControl(),
@@ -20,9 +20,6 @@ export class AppComponent implements OnInit {
 
   constructor(private store: Store<any>) {
     this.dataCards$ = this.store.select('reducer');
-  }
-
-  ngOnInit() {
     this.store.dispatch(new GetMainData());
     this.dataCards$.subscribe((data) => {
       this.subscribeData = data.mainOffice;
@@ -34,7 +31,7 @@ export class AppComponent implements OnInit {
   };
 
   handleSubmit = () => {
-    const { password, login } = this.autorizationForm.value;
+    // const { password, login } = this.autorizationForm.value;
     this.store.dispatch(new OpenMain());
   };
 }

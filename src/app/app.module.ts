@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
+// import { EffectsModule } from '@ngrx/effects';
 // import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
@@ -13,16 +13,18 @@ import { PopupFormFilial } from './popupFormFilial/popupFormFilial.component';
 
 import { modalOpenReducer } from './store/reducers/modal.reducer';
 import { PopupFormMainEditComponent } from './popupFormMainEdit/popupFormMainEdit.component';
+import { PopupFormFilialAddComponent } from './popupFormFilialAdd/popupFormFilialAdd.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     MainOrganization,
     Filial,
     PopupFormMain,
     PopupFormFilial,
     PopupFormMainEditComponent,
-  ],
+      PopupFormFilialAddComponent
+   ],
   imports: [
     BrowserModule,
     // CommonModule,

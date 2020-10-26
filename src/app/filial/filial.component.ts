@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { CloseFilial, OpenFilial } from '../store/actions/organization.actions';
+import { OpenFilial } from '../store/actions/organization.actions';
 
 @Component({
   selector: 'app-filial',

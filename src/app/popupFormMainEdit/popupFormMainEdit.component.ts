@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { FormGroup, FormControl } from '@angular/forms';
 import {
   ClosePopups,
-  AddMainOrganization,
+  AddOrganization,
+  EditMainOrganization,
 } from '../store/actions/organization.actions';
 
 @Component({
@@ -15,12 +16,11 @@ import {
 export class PopupFormMainEditComponent {
   isOpen$: Observable<any>;
   subscribeData: any;
-  @Input() idMain: number;
 
   constructor(private store: Store<any>) {
     this.isOpen$ = this.store.select('reducer');
     this.subscribeData = this.isOpen$.subscribe(
-      (data) => (this.subscribeData = data.isOpenEditMain)
+      (data) => (this.subscribeData = data)
     );
   }
 
@@ -46,7 +46,7 @@ export class PopupFormMainEditComponent {
     } = this.organizationForm.value;
 
     this.store.dispatch(
-      new AddMainOrganization({
+      new EditMainOrganization({
         fullName,
         shortName,
         inn,
@@ -54,13 +54,15 @@ export class PopupFormMainEditComponent {
         mainPerson,
         adress,
         phone,
+        id: this.subscribeData.officeModalData.id,
       })
     );
     this.store.dispatch(new ClosePopups());
+    console.log(this.subscribeData.officeModalData);
   };
 
   handlerPopupClose = () => {
-    console.log(this.idMain);
+    console.log(this.subscribeData.officeModalData.id);
     this.store.dispatch(new ClosePopups());
   };
 }
