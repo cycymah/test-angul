@@ -112,13 +112,12 @@ const initialState: State = {
   ],
 };
 
-export const modalOpenReducer = (
+export const mainReducer = (
   state = initialState,
   action: { type: string; payload: any }
 ) => {
-  console.log(action.type, action.payload);
-
   switch (action.type) {
+    // Открытие / закрытие попапов
     case Actions.OpenMain: {
       return { ...state, isOpenMain: true };
     }
@@ -148,6 +147,7 @@ export const modalOpenReducer = (
       return state;
     }
 
+    // Добавляем головной офис
     case Actions.AddData: {
       return {
         ...state,
@@ -155,6 +155,7 @@ export const modalOpenReducer = (
       };
     }
 
+    // Добавляем филиал
     case Actions.AddFilialData: {
       const filialState = state.mainOffice.map((office) =>
         office.id === action.payload.id
@@ -164,13 +165,13 @@ export const modalOpenReducer = (
             }
           : office
       );
-
       return {
         ...state,
         mainOffcie: filialState,
       };
     }
 
+    // Передаем информацию о текущем оппапе в стейт для дальнейшего использования
     case Actions.addPopupInfo: {
       return {
         ...state,
