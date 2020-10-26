@@ -10,12 +10,14 @@ import { OpenFilial } from '../store/actions/organization.actions';
 })
 export class Filial {
   @Input() filialCard;
-  isOpen$: Observable<any>;
+  storeData$: Observable<any>;
   subscribeData: any;
 
   constructor(private store: Store<any>) {
-    this.isOpen$ = this.store.select('reducer');
-    this.isOpen$.subscribe((data) => (this.subscribeData = data.isOpenFilial));
+    this.storeData$ = this.store.select('reducer');
+    this.storeData$.subscribe(
+      (data) => (this.subscribeData = data.isOpenFilial)
+    );
   }
 
   handleEdit = () => {

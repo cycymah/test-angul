@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { FormGroup, FormControl } from '@angular/forms';
 import {
   ClosePopups,
-  AddOrganization,
   EditMainOrganization,
 } from '../store/actions/organization.actions';
 
@@ -14,16 +13,17 @@ import {
   styleUrls: ['./popupFormMainEdit.component.css'],
 })
 export class PopupFormMainEditComponent {
-  isOpen$: Observable<any>;
+  storeData$: Observable<any>;
   subscribeData: any;
 
   constructor(private store: Store<any>) {
-    this.isOpen$ = this.store.select('reducer');
-    this.subscribeData = this.isOpen$.subscribe(
+    this.storeData$ = this.store.select('reducer');
+    this.subscribeData = this.storeData$.subscribe(
       (data) => (this.subscribeData = data)
     );
   }
 
+  // Инициализируем форму
   organizationForm = new FormGroup({
     fullName: new FormControl(),
     shortName: new FormControl(),
@@ -43,7 +43,7 @@ export class PopupFormMainEditComponent {
       mainPerson,
       adress,
       phone,
-    } = this.organizationForm.value;
+    } = this.organizationForm.value; // Берем значения с инпутов формы
 
     this.store.dispatch(
       new EditMainOrganization({
@@ -54,15 +54,13 @@ export class PopupFormMainEditComponent {
         mainPerson,
         adress,
         phone,
-        id: this.subscribeData.officeModalData.id,
+        id: this.subscribeData.officeModalData.id, // Передаем экшену данные с формы
       })
     );
     this.store.dispatch(new ClosePopups());
-    console.log(this.subscribeData.officeModalData);
   };
 
   handlerPopupClose = () => {
-    console.log(this.subscribeData.officeModalData.id);
     this.store.dispatch(new ClosePopups());
   };
 }

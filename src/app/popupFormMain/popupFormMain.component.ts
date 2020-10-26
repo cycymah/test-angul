@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { FormGroup, FormControl } from '@angular/forms';
+import { v1 as uuidv1 } from 'uuid';
 import {
   ClosePopups,
   AddOrganization,
@@ -13,12 +14,12 @@ import {
   styleUrls: ['./popupFormMain.component.css'],
 })
 export class PopupFormMain {
-  isOpen$: Observable<any>;
+  storeData$: Observable<any>;
   subscribeData: any;
 
   constructor(private store: Store<any>) {
-    this.isOpen$ = this.store.select('reducer');
-    this.subscribeData = this.isOpen$.subscribe(
+    this.storeData$ = this.store.select('reducer');
+    this.subscribeData = this.storeData$.subscribe(
       (data) => (this.subscribeData = data)
     );
   }
@@ -42,8 +43,9 @@ export class PopupFormMain {
       mainPerson,
       adress,
       phone,
-    } = this.organizationForm.value;
+    } = this.organizationForm.value; // Получаем данные с формы
 
+    // Передаем данные инпутов в хранилище
     this.store.dispatch(
       new AddOrganization({
         fullName,
@@ -53,7 +55,7 @@ export class PopupFormMain {
         mainPerson,
         adress,
         phone,
-        id: 34,
+        id: uuidv1(), // Генерируем id
       })
     );
     this.store.dispatch(new ClosePopups());

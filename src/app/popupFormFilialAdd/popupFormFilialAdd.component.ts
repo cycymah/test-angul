@@ -13,12 +13,12 @@ import {
   styleUrls: ['./popupFormFilialAdd.component.css'],
 })
 export class PopupFormFilialAddComponent {
-  isOpen$: Observable<any>;
+  storeData$: Observable<any>;
   subscribeData: any;
 
   constructor(private store: Store<any>) {
-    this.isOpen$ = this.store.select('reducer');
-    this.isOpen$.subscribe((data) => {
+    this.storeData$ = this.store.select('reducer');
+    this.storeData$.subscribe((data) => {
       this.subscribeData = data;
     });
   }
@@ -32,6 +32,7 @@ export class PopupFormFilialAddComponent {
     phone: new FormControl(),
   });
 
+  // Сабмит добавления филиала
   handleSubmit = () => {
     const { mainPerson, adress, phone } = this.filialForm.value;
 

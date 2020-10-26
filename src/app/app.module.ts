@@ -2,14 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
-
 import { AppComponent } from './app.component';
+
 import { MainOrganization } from './mainOrganization/mainOrganization.component';
 import { Filial } from './filial/filial.component';
 import { PopupFormMain } from './popupFormMain/popupFormMain.component';
 import { PopupFormFilial } from './popupFormFilial/popupFormFilial.component';
-
-import { modalOpenReducer } from './store/reducers/modal.reducer';
+import { mainReducer } from './store/reducers/main.reducer';
 import { PopupFormMainEditComponent } from './popupFormMainEdit/popupFormMainEdit.component';
 import { PopupFormFilialAddComponent } from './popupFormFilialAdd/popupFormFilialAdd.component';
 
@@ -25,11 +24,9 @@ import { PopupFormFilialAddComponent } from './popupFormFilialAdd/popupFormFilia
   ],
   imports: [
     BrowserModule,
-    // CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({ reducer: modalOpenReducer }),
-    // EffectsModule.forRoot([]),
+    StoreModule.forRoot({ reducer: mainReducer }),
   ],
   providers: [],
   bootstrap: [AppComponent],

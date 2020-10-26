@@ -15,16 +15,17 @@ import {
 export class MainOrganization {
   @Input() mainCard;
 
-  isOpen$: Observable<any>;
+  storeData$: Observable<any>;
   subscribeData: any;
 
   constructor(private store: Store<any>) {
-    this.isOpen$ = this.store.select('reducer');
-    this.subscribeData = this.isOpen$.subscribe(
+    this.storeData$ = this.store.select('reducer');
+    this.subscribeData = this.storeData$.subscribe(
       (data) => (this.subscribeData = data)
     );
   }
 
+  // Получаем данные с карточек переданных в компонент
   handleClickAdd = () => {
     this.store.dispatch(
       new AddPopupInfo({
@@ -41,6 +42,8 @@ export class MainOrganization {
     this.store.dispatch(new OpenAddFilial());
   };
 
+  // При клики редактирования, делаем копию текущей карточки в стейт
+  // для использования в других компонентах
   handleClickEdit = () => {
     this.store.dispatch(
       new AddPopupInfo({

@@ -43,6 +43,20 @@ export class OpenEditMain implements Action {
   readonly type = Actions.OpenEditMain;
   constructor() {}
 }
+export class OpenFilial implements Action {
+  readonly type = Actions.OpenFilial;
+  constructor() {}
+}
+
+export class OpenAddFilial implements Action {
+  readonly type = Actions.OpenAddFilial;
+  constructor() {}
+}
+
+export class ClosePopups implements Action {
+  readonly type = Actions.ClosePopups;
+  constructor() {}
+}
 
 export class EditMainOrganization implements Action {
   readonly type = Actions.EditMainOrganization;
@@ -60,16 +74,6 @@ export class EditMainOrganization implements Action {
   ) {}
 }
 
-export class OpenFilial implements Action {
-  readonly type = Actions.OpenFilial;
-  constructor() {}
-}
-
-export class OpenAddFilial implements Action {
-  readonly type = Actions.OpenAddFilial;
-  constructor() {}
-}
-
 export class AddFilialData implements Action {
   readonly type = Actions.AddFilialData;
   constructor(
@@ -80,11 +84,6 @@ export class AddFilialData implements Action {
       id: any;
     }
   ) {}
-}
-
-export class ClosePopups implements Action {
-  readonly type = Actions.ClosePopups;
-  constructor() {}
 }
 
 export class AddPopupInfo implements Action {
@@ -103,13 +102,3 @@ export class AddPopupInfo implements Action {
     }
   ) {}
 }
-
-// export type Actions =
-//   | AddPopupInfo
-//   | ClosePopups
-//   | AddFilialData
-//   | OpenAddFilial
-//   | OpenFilial
-//   | EditMainOrganization
-//   | OpenEditMain
-//   | OpenMain;

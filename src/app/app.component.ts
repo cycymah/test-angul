@@ -20,18 +20,15 @@ export class AppComponent {
 
   constructor(private store: Store<any>) {
     this.dataCards$ = this.store.select('reducer');
-    this.store.dispatch(new GetMainData());
     this.dataCards$.subscribe((data) => {
       this.subscribeData = data.mainOffice;
     });
+    this.store.dispatch(new GetMainData());
   }
 
   handleAddMain = () => {
-    this.store.dispatch(new OpenMain());
+    this.store.dispatch(new OpenMain()); // Открытие попапа с добавлением головной организации
   };
 
-  handleSubmit = () => {
-    // const { password, login } = this.autorizationForm.value;
-    this.store.dispatch(new OpenMain());
-  };
+  handleSubmit = () => {}; // Подтверждене для авторизации
 }
