@@ -26,85 +26,85 @@ const initialState: State = {
   },
   mainOffice: [
     {
-      fullName: 'ФЫафывафыв',
-      shortName: 'ЬЛО',
+      fullName: 'Копыта и Рога',
+      shortName: 'КиР',
       inn: '237289043875',
       kpp: '12341234',
-      mainPerson: 'Брых',
-      adress: 'Адрес',
-      phone: 'Телефон',
+      mainPerson: 'Брых К.А.',
+      adress: 'Адрес 72ю - 34',
+      phone: '2839403',
       id: 1,
       filial: [
         {
-          adress: 'Адрес',
-          mainPerson: 'Должностное лицо',
-          phone: 'Телефон',
+          adress: 'Карикатурная 65 - 324',
+          mainPerson: 'Хахихин И.А.',
+          phone: '2003254',
           id: 23,
         },
         {
-          adress: '1',
-          mainPerson: 'Должностное лицо',
-          phone: 'Телефон',
+          adress: 'Смешнушная 23 - 24',
+          mainPerson: 'Должностнолицев В.Н.',
+          phone: '4333223',
           id: 42,
         },
         {
-          adress: '2',
-          mainPerson: 'Должностное лицо',
-          phone: 'Телефон',
+          adress: 'Веселковая 54 - 32',
+          mainPerson: 'Хихахин А.И.',
+          phone: '3456765',
           id: 234,
         },
         {
-          adress: '3',
-          mainPerson: 'Должностное лицо',
-          phone: 'Телефон',
+          adress: 'Юморная 65 - 34',
+          mainPerson: 'Хахатушкина О.О.',
+          phone: '3455342',
           id: 42,
         },
       ],
     },
     {
-      fullName: '1',
-      shortName: 'ыва',
-      inn: '2341234',
-      kpp: '234',
-      mainPerson: 'ва',
-      adress: 'ыва',
-      phone: 'ыва',
+      fullName: 'Самые отреставрированные сети',
+      shortName: 'СОС',
+      inn: '87562341234',
+      kpp: '2342341',
+      mainPerson: 'Шышкин Н.И.',
+      adress: 'Раритетная 234 - 87',
+      phone: '2347543',
       id: 2,
       filial: [
         {
-          adress: 'Адрес',
-          mainPerson: 'Должностное лицо',
-          phone: 'Телефон',
+          adress: 'Лютая 453 - 3',
+          mainPerson: 'Геральд из Ривии',
+          phone: '3425345',
           id: 1,
         },
         {
-          adress: '1',
-          mainPerson: 'Должностное лицо',
-          phone: 'Телефон',
+          adress: 'Винтерфелл 54 - 23',
+          mainPerson: 'Эддард Старк',
+          phone: '42438765',
           id: 2,
         },
       ],
     },
     {
-      fullName: '2',
-      shortName: 'ыва',
-      inn: '!!!!!',
-      kpp: '234',
-      mainPerson: 'ва',
-      adress: 'ыва',
-      phone: 'ыва',
+      fullName: 'У Амуна',
+      shortName: 'УА',
+      inn: '3453466723',
+      kpp: '6784534234',
+      mainPerson: 'Балгруф Р.Н.',
+      adress: 'Вайтран 34 - 23',
+      phone: '7569784',
       id: 3,
       filial: [
         {
-          adress: 'Адрес',
-          mainPerson: 'Должностное лицо',
-          phone: 'Телефон',
+          adress: 'Краснодеревяжная 45 - 53',
+          mainPerson: 'Красивушкин Ж.О.',
+          phone: '75673452',
           id: 1,
         },
         {
-          adress: '1',
-          mainPerson: 'Должностное лицо',
-          phone: 'Телефон',
+          adress: 'Еслибпроехал 54 - 534',
+          mainPerson: 'Кржкин Л.В.',
+          phone: '32587234',
           id: 2,
         },
       ],
@@ -188,13 +188,13 @@ export const mainReducer = (
       };
     }
 
+    // Редактирование головной организации
     case Actions.EditMainOrganization: {
       const newState = state.mainOffice.map((item) =>
         item.id === action.payload.id
           ? { ...action.payload, filial: item.filial }
           : item
       );
-
       return {
         ...state,
         mainOffice: newState,
