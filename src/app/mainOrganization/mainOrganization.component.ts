@@ -12,7 +12,7 @@ import {
   templateUrl: './mainOrganization.component.html',
   styleUrls: ['./mainOrganization.component.css'],
 })
-export class MainOrganization implements Input {
+export class MainOrganization {
   @Input() mainCard;
 
   isOpen$: Observable<any>;

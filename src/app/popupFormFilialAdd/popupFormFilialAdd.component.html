@@ -9,6 +9,8 @@
       action="#"
       class="form__section form__section_target_mainOrg"
       name="editMainOrg"
+      [formGroup]="filialForm"
+      (ngSubmit)="handleSubmit()"
       novalidate
     >
       <label class="form__field">
@@ -16,7 +18,7 @@
           type="text"
           class="form__input form__input_field_mainPerson"
           placeholder="Руководитель подразделения"
-          name="mainPerson"
+          formControlName="mainPerson"
           required
         />
       </label>
@@ -25,7 +27,7 @@
           type="text"
           class="form__input form__input_field_adress"
           placeholder="Адрес"
-          name="adress"
+          formControlName="adress"
           required
         />
       </label>
@@ -35,6 +37,7 @@
           class="form__input form__input_field_phone"
           placeholder="Телефон"
           name="phone"
+          formControlName="phone"
           required
         />
       </label>

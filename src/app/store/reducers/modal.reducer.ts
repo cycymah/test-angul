@@ -39,25 +39,25 @@ const initialState: State = {
           adress: 'Адрес',
           mainPerson: 'Должностное лицо',
           phone: 'Телефон',
-          id: 1,
+          id: 23,
         },
         {
           adress: '1',
           mainPerson: 'Должностное лицо',
           phone: 'Телефон',
-          id: 2,
+          id: 42,
         },
         {
           adress: '2',
           mainPerson: 'Должностное лицо',
           phone: 'Телефон',
-          id: 3,
+          id: 234,
         },
         {
           adress: '3',
           mainPerson: 'Должностное лицо',
           phone: 'Телефон',
-          id: 4,
+          id: 42,
         },
       ],
     },
@@ -112,8 +112,11 @@ const initialState: State = {
   ],
 };
 
-export const modalOpenReducer = (state = initialState, action: Actions) => {
-  console.log(action.type, action);
+export const modalOpenReducer = (
+  state = initialState,
+  action: { type: string; payload: any }
+) => {
+  console.log(action.type, action.payload);
 
   switch (action.type) {
     case Actions.OpenMain: {
@@ -148,18 +151,23 @@ export const modalOpenReducer = (state = initialState, action: Actions) => {
     case Actions.AddData: {
       return {
         ...state,
-        mainOffice: [
-          ...state.mainOffice,
-          {
-            fullName: action.payload.fullName,
-            shortName: action.payload.shortName,
-            inn: action.payload.inn,
-            kpp: action.payload.kpp,
-            mainPerson: action.payload.mainPerson,
-            adress: action.payload.adress,
-            phone: action.payload.phone,
-          },
-        ],
+        mainOffice: [...state.mainOffice, action.payload],
+      };
+    }
+
+    case Actions.AddFilialData: {
+      const filialState = state.mainOffice.map((office) =>
+        office.id === action.payload.id
+          ? {
+              ...office,
+              filial: [...office.filial, action.payload],
+            }
+          : office
+      );
+
+      return {
+        ...state,
+        mainOffcie: filialState,
       };
     }
 

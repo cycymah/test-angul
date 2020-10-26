@@ -12,10 +12,9 @@ import {
   templateUrl: './popupFormMain.component.html',
   styleUrls: ['./popupFormMain.component.css'],
 })
-export class PopupFormMain implements Input {
+export class PopupFormMain {
   isOpen$: Observable<any>;
   subscribeData: any;
-  @Input() idMain: number;
 
   constructor(private store: Store<any>) {
     this.isOpen$ = this.store.select('reducer');
@@ -54,13 +53,13 @@ export class PopupFormMain implements Input {
         mainPerson,
         adress,
         phone,
+        id: 34,
       })
     );
     this.store.dispatch(new ClosePopups());
   };
 
   handlerPopupClose = () => {
-    console.log(this.idMain);
     this.store.dispatch(new ClosePopups());
   };
 }
